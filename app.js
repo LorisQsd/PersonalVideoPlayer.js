@@ -2,7 +2,7 @@ window.addEventListener("load", init)
 
 function init() {
 
-    // SET TEMPORARY 
+    // SET VOLUME
     setTimeout(() => {video1.volume = 0.1; volumeRange.value = (video1.volume*100)},200)
     //
     // PLAY PAUSE BTN
@@ -13,27 +13,23 @@ function init() {
     video1.addEventListener("click", togglePlay)
     let intervalId;
 
-    let togglePlayPause = false;
     function togglePlay() {
-        if (!togglePlayPause) {
+        if (video.paused) {
             playBtn.src = "ressources/pause.svg"
             video1.play();
-            togglePlayPause = true;
-
 
             intervalId = setInterval(() => {
                 const currentTimer = document.querySelector("#current-time");
-                const minutes = Math.floor(video1.currentTime / 60);
-                let seconds = Math.round(video1.currentTime % 60);
+                const minutes = Math.trunc(video1.currentTime / 60);
+                let seconds = Math.trunc(video1.currentTime % 60);
                 if (seconds < 10) {
-                    seconds = `0${Math.round(video1.currentTime % 60)}`
+                    seconds = `0${Math.trunc(video1.currentTime % 60)}`
                 }
                 currentTimer.textContent = `${minutes}:${seconds}`
             }, 1000)
         } else {
             playBtn.src = "ressources/play.svg";
             video1.pause();
-            togglePlayPause = false;
             clearInterval(intervalId)
             
         }
@@ -98,11 +94,8 @@ function init() {
         progressBar.style.width = (curTime / (video1.duration / 100)) + "%"
         rangeTimer.value = (curTime / (video1.duration / 100));
 
-        if ((video1.currentTime+0.1) > video1.duration){
-            
+        if (video1.ended){
             playBtn.src = "ressources/play.svg";
-            video1.pause();
-            togglePlayPause = false;
             clearInterval(intervalId)
         }
     })
@@ -115,19 +108,19 @@ function init() {
     const currentTimer = document.querySelector("#current-time");
     rangeTimer.addEventListener("mouseup", () => {
         
-        const minutes = Math.floor(video1.currentTime / 60);
-        let seconds = Math.round(video1.currentTime % 60);
+        const minutes = Math.trunc(video1.currentTime / 60);
+        let seconds = Math.trunc(video1.currentTime % 60);
         console.log(video1.currentTime)
         if (seconds < 10) {
-            seconds = `0${Math.round(video1.currentTime % 60)}`
+            seconds = `0${Math.trunc(video1.currentTime % 60)}`
         }
         currentTimer.textContent = `${minutes}:${seconds}`
     })
 
     // VIDEO DURATION
     const totalTime = document.querySelector("#total-time");
-    const minutes = Math.floor(video1.duration / 60)
-    const seconds = Math.floor(video1.duration % 60)
+    const minutes = Math.trunc(video1.duration / 60)
+    const seconds = Math.trunc(video1.duration % 60)
 
     totalTime.textContent = `/ ${minutes}:${seconds}`
 

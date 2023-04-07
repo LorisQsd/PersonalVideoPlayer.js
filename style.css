@@ -29,10 +29,12 @@ h1 span {
   margin: 0 auto;
   max-width: 800px;
   overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 
 video {
   width: 100%;
+  height: auto;
   cursor: pointer;
 }
 
@@ -99,4 +101,5 @@ img {
 
 .time {
   user-select: none;
+  font-variant-numeric: tabular-nums;
 }

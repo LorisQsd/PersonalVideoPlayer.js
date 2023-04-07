@@ -18,7 +18,9 @@
 <body>
     <h1>Lecteur <span>personnalisé.</span></h1>
     <div class="container">
-
+        <video src="ressources/video.mp4" preload="metadata" id="video">
+            <source src="ressources/video.mp4" type="video/mp4"></source>
+        </video>
         <div class="timer">
             <input type="range" id="range-timer" min="0" max="100">
             <div class="progress-bar"></div>
@@ -28,7 +30,7 @@
             <div class="controller">
                 <img src="ressources/play.svg" alt="Boutton play" id="playPauseBtn">
                 <img src="ressources/unmute.svg" alt="Boutton unmute" id="muteUnmuteBtn">
-                <input type="range" id="volume" min="0" max="100">
+                <input type="range" id="volume" min="0" max="100" value="10" step="1">
                 <div class="time">
                     <span id="current-time">0:00</span>
                     <span id="total-time">/ 3:46</span>
@@ -39,7 +41,7 @@
             </div>
         </div>
 
-        <video src="ressources/video.mp4" id="video"></video>
+        
     </div>
 
     <script src="app.js"></script>
