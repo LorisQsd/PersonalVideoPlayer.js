@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video Player</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1>Lecteur <span>personnalisé.</span></h1>
+    <div class="container">
+
+        <div class="timer">
+            <input type="range" id="range-timer" min="0" max="100">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="wrapper">
+            <div class="controller">
+                <img src="ressources/play.svg" alt="Boutton play" id="playPauseBtn">
+                <img src="ressources/unmute.svg" alt="Boutton unmute" id="muteUnmuteBtn">
+                <input type="range" id="volume" min="0" max="100">
+                <div class="time">
+                    <span id="current-time">0:00</span>
+                    <span id="total-time">/ 3:46</span>
+                </div>
+            </div>
+            <div class="fullscreen">
+                <img src="ressources/fullscreen.svg" alt="Plein écran" id="fullscreen">
+            </div>
+        </div>
+
+        <video src="ressources/video.mp4" id="video"></video>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
